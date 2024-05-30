@@ -15,6 +15,7 @@
 <script>
 import axios from 'axios';
 import ProductList from './ProductList.vue';
+const apiUrl = import.meta.env.VUE_APP_API_URL || "http://localhost:3000";
 
 export default {
   data() {
@@ -25,7 +26,7 @@ export default {
   methods: {
     async fetchClient() {
       try {
-        const response = await axios.get(`http://localhost:3000/clients/${this.$route.params.id}`);
+        const response = await axios.get(`${apiUrl}/clients/${this.$route.params.id}`);
         this.client = response.data;
       } catch (error) {
         console.error(error);
