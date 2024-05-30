@@ -1,12 +1,12 @@
 <template>
   <div id="app">
-    <header>
-      <h1>Client Management</h1>
+    <header class="flex items-center bg-gray-800 text-white">
       <nav>
-        <router-link to="/">Home</router-link>
+        <router-link to="/"><h2 class="p-5 bg-gray-600">Home</h2></router-link>
       </nav>
+      <h1 class="p-4 text-center text-xl">Client Management</h1>
     </header>
-    <main>
+    <main class="flex justify-center px-10 py-40 ">
       <router-view />
     </main>
   </div>
@@ -14,8 +14,8 @@
 
 <script>
 export default {
-  name: 'App',
-};
+  name: 'App'
+}
 </script>
 
 <style>
@@ -25,31 +25,4 @@ body {
   padding: 0;
 }
 
-#app {
-  text-align: center;
-}
-
-header {
-  background-color: #42b983;
-  color: white;
-  padding: 1em 0;
-}
-
-header h1 {
-  margin: 0;
-}
-
-nav {
-  margin: 1em 0;
-}
-
-nav a {
-  color: white;
-  margin: 0 1em;
-  text-decoration: none;
-}
-
-main {
-  padding: 2em;
-}
 </style>
