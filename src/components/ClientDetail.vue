@@ -3,6 +3,8 @@
     <h2>Client Detail</h2>
     <div v-if="client">
       <p>Name: {{ client.name }}</p>
+      <p>docType: {{ client.docType }}</p>
+      <p>docNum: {{ client.docNum }}</p>
       <p>Email: {{ client.email }}</p>
       <h3>Products</h3>
       <ProductList :products="client.products" />

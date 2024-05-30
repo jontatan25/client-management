@@ -20,7 +20,7 @@
           @click="selectClient(client.id)"
           class="border-b border-gray-400 overflow-scroll cursor-pointer hover:bg-blue-900 "
         >
-          <td class="p-5 max-w-[120px]">{{ client.name }}</td>
+          <td class="p-5 max-w-[120px]">{{ client.name}}</td>
           <td class="p-5 max-w-[225px]">{{ client.email }}</td>
         </tr>
       </tbody>

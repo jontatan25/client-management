@@ -2,19 +2,28 @@
     "clients": [
       {
         "id": 1,
-        "name": "John Doe",
-        "email": "john.doe@example.com",
+        "name": "Enriqueta Parlem",
+        "docType": "nif",
+        "docNum": "11223344E",
+        "email": "enriqueta.P@example.com",
+        "customerId": "11111",
+        "phone": "668668668",
         "products": [
-          { "id": 1, "name": "Product 1" },
-          { "id": 2, "name": "Product 2" }
+          { "id": 1, "name": "FIBRA 1000MB," },
+          { "id": 2, "name": "MOBIL 500GB" }
         ]
       },
       {
         "id": 2,
-        "name": "Jane Smith",
-        "email": "jane.smith@example.com",
+        "name": "Michael Johnson",
+        "docType": "driver's license",
+        "docNum": "EF456789",
+        "email": "michael.j@example.com",
+        "customerId": "44444",
+        "phone": "555555555",
         "products": [
-          { "id": 3, "name": "Product 3" }
+          { "id": 7, "name": "FIBER OPTIC 2000MB" },
+          { "id": 8, "name": "UNLIMITED CALLS" }
         ]
       }
     ]
