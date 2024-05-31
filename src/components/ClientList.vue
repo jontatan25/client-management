@@ -1,29 +1,57 @@
 <template>
   <div class="bg-gray-800 p-5 text-white rounded">
     <h2 class="py-5 text-center">CLIENT LIST</h2>
-    <input class="mb-5 p-2 rounded text-black" v-model="search" placeholder="Search by name" />
+    <input class="mb-5 ml-5 p-2 rounded text-black" v-model="search" placeholder="Search by name" />
     <table class="w-full">
       <thead>
         <tr class="border-b">
-          <th class="pb-2">
-            <button @click="sort('givenName')">Name</button>
+          <th>
+            <button
+              class="flex items-center justify-between p-5 w-full hover:bg-sky-700 rounded transition ease-in-out delay-30"
+              @click="sort('givenName')"
+            >
+              <span class="mr-2">Name</span>
+              <SortIcon class="fill-current" />
+            </button>
           </th>
-          <th class="pb-2">
-            <button @click="sort('email')">Email</button>
+          <th>
+            <button
+              class="flex items-center justify-between p-5 w-full hover:bg-sky-700 rounded transition ease-in-out delay-30"
+              @click="sort('email')"
+            >
+              <span class="mr-2">Email</span>
+              <SortIcon class="fill-current" />
+            </button>
           </th>
-          <th class="pb-2">
-            <button @click="sort('docType')">Document Type</button>
+          <th>
+            <button
+              class="flex items-center justify-between p-5 w-full hover:bg-sky-700 rounded transition ease-in-out delay-30"
+              @click="sort('docType')"
+            >
+              <span class="mr-2">Document Type</span>
+              <SortIcon class="fill-current" />
+            </button>
           </th>
-          <th class="pb-2">
-            <button @click="sort('docNum')">Document Number</button>
+          <th>
+            <button
+              class="flex items-center justify-between p-5 w-full hover:bg-sky-700 rounded transition ease-in-out delay-30"
+              @click="sort('docNum')"
+            >
+              <span class="mr-2">Document Number</span>
+              <SortIcon class="fill-current" />
+            </button>
           </th>
-          <th class="pb-2">
-            <button @click="sort('customerId')">Customer ID</button>
+          <th>
+            <button
+              class="flex items-center justify-between p-5 w-full hover:bg-sky-700 rounded transition ease-in-out delay-30"
+              @click="sort('customerId')"
+            >
+              <span class="mr-2">Customer ID</span>
+              <SortIcon class="fill-current" />
+            </button>
           </th>
-          <th class="pb-2">
-            <button @click="sort('phone')">Phone</button>
-          </th>
-          <th class="pb-2">Products</th>
+          <th>Phone</th>
+          <th>Products</th>
         </tr>
       </thead>
       <tbody>
@@ -31,15 +59,15 @@
           v-for="client in filteredClients"
           :key="client._id"
           @click="selectClient(client.id)"
-          class="border-b border-gray-400 overflow-scroll cursor-pointer hover:bg-blue-900"
+          class="border-b border-gray-400 overflow-scroll cursor-pointer hover:bg-blue-900 transition ease-in-out delay-30"
         >
-          <td class="p-5 max-w-[120px]">{{ client.givenName }} {{ client.familyName1 }}</td>
-          <td class="p-5 max-w-[225px]">{{ client.email }}</td>
-          <td class="p-5 max-w-[120px]">{{ client.docType }}</td>
-          <td class="p-5 max-w-[120px]">{{ client.docNum }}</td>
-          <td class="p-5 max-w-[120px]">{{ client.customerId }}</td>
-          <td class="p-5 max-w-[120px]">{{ client.phone }}</td>
-          <td class="p-5 max-w-[225px]">
+          <td class="p-5 min-w-[200px]">{{ client.givenName }} {{ client.familyName1 }}</td>
+          <td class="p-5 min-w-[225px]">{{ client.email }}</td>
+          <td class="p-5 min-w-[180px]">{{ client.docType }}</td>
+          <td class="p-5 min-w-[200px]">{{ client.docNum }}</td>
+          <td class="p-5 min-w-[120px]">{{ client.customerId }}</td>
+          <td class="p-5 min-w-[120px] max-w-[120px]">{{ client.phone }}</td>
+          <td class="p-5 min-w-[120px] max-w-[225px]">
             <ul>
               <li v-for="product in client.products" :key="product._id">
                 {{ product.productName }}
@@ -54,9 +82,14 @@
 
 <script>
 import axios from 'axios'
+import SortIcon from './SortIcon.vue'
+
 const apiUrl = import.meta.env.VITE_APP_API_URL || 'http://localhost:3000'
 
 export default {
+  components: {
+    SortIcon
+  },
   data() {
     return {
       clients: [],
@@ -114,3 +147,9 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+button:hover .fill-current {
+  color: white;
+}
+</style>
