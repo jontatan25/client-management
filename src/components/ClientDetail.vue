@@ -15,7 +15,7 @@
 <script>
 import axios from 'axios';
 import ProductList from './ProductList.vue';
-const apiUrl = import.meta.env.VUE_APP_API_URL || "http://localhost:3000";
+const apiUrl = import.meta.env.VITE_APP_API_URL || "http://localhost:3000";
 
 export default {
   data() {

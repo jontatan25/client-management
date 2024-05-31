@@ -30,6 +30,7 @@
 
 <script>
 import axios from 'axios'
+const apiUrl = import.meta.env.VITE_APP_API_URL || "http://localhost:3000";
 
 export default {
   data() {
@@ -60,7 +61,7 @@ export default {
   methods: {
     async fetchClients() {
       try {
-        const response = await axios.get('http://localhost:3000/clients')
+        const response = await axios.get(`${apiUrl}/clients`)
         this.clients = response.data
       } catch (error) {
         console.error(error)
