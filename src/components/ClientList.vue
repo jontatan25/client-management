@@ -1,10 +1,9 @@
 <template>
-  <div class="bg-gray-800 p-5 text-white rounded">
-    <h2 class="py-5 text-center">CLIENT LIST</h2>
-    <input class="mb-5 ml-5 p-2 rounded text-black" v-model="search" placeholder="Search by name" />
+  <div class="bg-gray-800 p-5 text-white rounded min-w-[1358px]">
+    <input class="my-5 ml-5 p-2 rounded text-black h-14 w-1/3" v-model="search" placeholder="Search by name" />
     <table class="w-full">
       <thead>
-        <tr class="border-b">
+        <tr class="border-b border-b-slate-600">
           <th>
             <button
               class="flex items-center justify-between p-5 w-full hover:bg-sky-700 rounded transition ease-in-out delay-30"
@@ -59,7 +58,7 @@
           v-for="client in filteredClients"
           :key="client._id"
           @click="selectClient(client.id)"
-          class="border-b border-gray-400 overflow-scroll cursor-pointer hover:bg-blue-900 transition ease-in-out delay-30"
+          class="border-b border-b-slate-600 overflow-scroll cursor-pointer hover:bg-blue-900 transition ease-in-out delay-30 text-slate-200"
         >
           <td class="p-5 min-w-[200px]">{{ client.givenName }} {{ client.familyName1 }}</td>
           <td class="p-5 min-w-[225px]">{{ client.email }}</td>
