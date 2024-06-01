@@ -88,72 +88,69 @@
   </div>
 </template>
 
-<script>
+<script setup lang="ts">
+import { ref, computed, onMounted } from 'vue'
 import axios from 'axios'
-import SortIcon from './SortIcon.vue'
+import { useRouter } from 'vue-router'
+import SortIcon from '@/components/SortIcon.vue'
+import { Product, Client } from '@/types'
 
 const apiUrl = import.meta.env.VITE_APP_API_URL || 'http://localhost:3000'
 
-export default {
-  components: {
-    SortIcon
-  },
-  data() {
-    return {
-      clients: [],
-      products: [],
-      search: '',
-      sortKey: '',
-      sortAsc: true
-    }
-  },
-  computed: {
-    filteredClients() {
-      let result = this.clients
-        .map((client) => {
-          client.products = this.products.filter(
-            (product) => product.customerId === client.customerId
-          )
-          return client
-        })
-        .filter((client) => client.givenName.toLowerCase().includes(this.search.toLowerCase()))
-      if (this.sortKey) {
-        result = result.sort((a, b) => {
-          const aValue = a[this.sortKey]
-          const bValue = b[this.sortKey]
-          if (aValue < bValue) return this.sortAsc ? -1 : 1
-          if (aValue > bValue) return this.sortAsc ? 1 : -1
-          return 0
-        })
-      }
-      return result
-    }
-  },
-  methods: {
-    async fetchClients() {
-      try {
-        const [clientsResponse, productsResponse] = await Promise.all([
-          axios.get(`${apiUrl}/clients`),
-          axios.get(`${apiUrl}/products`)
-        ])
-        this.clients = clientsResponse.data
-        this.products = productsResponse.data
-      } catch (error) {
-        console.error(error)
-      }
-    },
-    sort(key) {
-      this.sortKey = key
-      this.sortAsc = !this.sortAsc
-    },
-    selectClient(clientId) {
-      this.$router.push({ name: 'ClientDetail', params: { id: clientId } })
-    }
-  },
-  created() {
-    this.fetchClients()
+const clients = ref<Client[]>([])
+const products = ref<Product[]>([])
+const search = ref('')
+const sortKey = ref('')
+const sortAsc = ref(true)
+const router = useRouter()
+
+const fetchClients = async () => {
+  try {
+    const [clientsResponse, productsResponse] = await Promise.all([
+      axios.get(`${apiUrl}/clients`),
+      axios.get(`${apiUrl}/products`)
+    ])
+    clients.value = clientsResponse.data
+    products.value = productsResponse.data
+  } catch (error) {
+    console.error(error)
   }
 }
+
+const sort = (key: string) => {
+  if (sortKey.value === key) {
+    sortAsc.value = !sortAsc.value
+  } else {
+    sortKey.value = key
+    sortAsc.value = true
+  }
+}
+
+const filteredClients = computed(() => {
+  let result = clients.value
+    .map((client) => {
+      client.products = products.value.filter((product) => product.customerId === client.customerId)
+      return client
+    })
+    .filter((client) => client.givenName.toLowerCase().includes(search.value.toLowerCase()))
+
+  if (sortKey.value) {
+    result = result.sort((a, b) => {
+      const aValue = a[sortKey.value as keyof Client]
+      const bValue = b[sortKey.value as keyof Client]
+      if (aValue < bValue) return sortAsc.value ? -1 : 1
+      if (aValue > bValue) return sortAsc.value ? 1 : -1
+      return 0
+    })
+  }
+  return result
+})
+
+const selectClient = (clientId: string) => {
+  router.push({ name: 'ClientDetail', params: { id: clientId } })
+}
+
+onMounted(fetchClients)
 </script>
 
 <style scoped>

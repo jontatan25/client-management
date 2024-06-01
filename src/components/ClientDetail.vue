@@ -1,7 +1,7 @@
 <template>
   <div class="bg-gray-800 text-white py-8 px-20 rounded w-[800px] flex justify-between">
     <div>
-      <h2 class="text-2xl mb-5 lato-bold ">Client Detail</h2>
+      <h2 class="text-2xl mb-5 lato-bold">Client Detail</h2>
       <div class="border-2 border-slate-500 border-opacity-40 mb-5">
         <div v-if="client" class="p-5">
           <div
@@ -50,39 +50,32 @@
   </div>
 </template>
 
-<script>
+<script setup lang="ts">
+import { ref, onMounted } from 'vue'
 import axios from 'axios'
-import ProductList from './ProductList.vue'
+import { useRoute } from 'vue-router'
+import ProductList from '@/components/ProductList.vue'
+import { Product, Client } from '@/types'
 
 const apiUrl = import.meta.env.VITE_APP_API_URL || 'http://localhost:3000'
 
-export default {
-  data() {
-    return {
-      client: null,
-      products: []
-    }
-  },
-  methods: {
-    async fetchClient() {
-      try {
-        const response = await axios.get(`${apiUrl}/clients/${this.$route.params.id}`)
-        this.client = response.data
+const client = ref<Client | null>(null)
+const products = ref<Product[]>([])
 
-        const productsResponse = await axios.get(
-          `${apiUrl}/products?customerId=${this.client.customerId}`
-        )
-        this.products = productsResponse.data
-      } catch (error) {
-        console.error(error)
-      }
-    }
-  },
-  created() {
-    this.fetchClient()
-  },
-  components: {
-    ProductList
+const route = useRoute()
+
+const fetchClient = async () => {
+  try {
+    const response = await axios.get(`${apiUrl}/clients/${route.params.id}`)
+    client.value = response.data
+    const productsResponse = await axios.get(
+      `${apiUrl}/products?customerId=${client.value.customerId}`
+    )
+    products.value = productsResponse.data
+  } catch (error) {
+    console.error(error)
   }
 }
+
+onMounted(fetchClient)
 </script>
