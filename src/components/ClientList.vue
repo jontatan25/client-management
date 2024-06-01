@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-gray-800 p-5 text-white rounded min-w-[1358px]">
+  <div class="bg-gray-800 px-5 py-6 text-white rounded min-w-[1358px]">
     <input
       class="my-5 ml-5 p-2 rounded text-black h-14 w-1/3"
       v-model="search"
@@ -58,7 +58,7 @@
             <th class="font-bold">Products</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody v-if="filteredClients.length > 0">
           <tr
             v-for="(client, index) in filteredClients"
             :key="client.id"
@@ -81,6 +81,11 @@
                 </li>
               </ul>
             </td>
+          </tr>
+        </tbody>
+        <tbody v-else>
+          <tr>
+            <td colspan="7" class="text-center py-5">No users found with the specified name</td>
           </tr>
         </tbody>
       </table>

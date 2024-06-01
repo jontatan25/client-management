@@ -6,7 +6,7 @@
       </nav>
       <h1 class="p-7 text-center text-2xl lato-bold">Client Management Tool</h1>
     </header>
-    <main class="flex justify-center px-10 py-20 ">
+    <main class="flex justify-center p-10 ">
       <router-view />
     </main>
   </div>
