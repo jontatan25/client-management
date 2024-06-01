@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="border-2 border-slate-500 border-opacity-40">
     <ul>
       <li v-for="product in products" :key="product._id" class="mb-2">
         <p><strong>Product Name:</strong> {{ product.productName }}</p>
