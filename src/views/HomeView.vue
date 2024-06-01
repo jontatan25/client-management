@@ -1,16 +1,9 @@
 <template>
-    <div>
-      <ClientList />
-    </div>
-  </template>
-  
-  <script>
-  import ClientList from '@/components/ClientList.vue';
-  
-  export default {
-    components: {
-      ClientList,
-    },
-  };
-  </script>
-  
+  <div>
+    <ClientList />
+  </div>
+</template>
+
+<script setup lang="ts">
+import ClientList from '@/components/ClientList.vue'
+</script>
