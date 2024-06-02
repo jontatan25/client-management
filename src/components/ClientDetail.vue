@@ -2,7 +2,7 @@
   <div class="bg-gray-800 text-white py-8 px-20 rounded w-[800px] flex justify-between">
     <div>
       <h2 class="text-2xl mb-5 lato-bold">Client Detail</h2>
-      <div class="border-2 border-slate-500 border-opacity-40 mb-5">
+      <div class="border-2 border-slate-500 border-opacity-40 mb-5 rounded">
         <div v-if="client" class="p-5">
           <div
             class="py-1 flex justify-between border-b-2 border-slate-500 border-opacity-40 text-slate-200"
@@ -45,7 +45,12 @@
     </div>
     <div>
       <h3 class="text-2xl mb-5 lato-bold">Products</h3>
-      <ProductList :products="products" class="p-5" />
+      <template v-if="products.length > 0">
+        <ProductList :products="products"/>
+      </template>
+      <template v-else>
+        <p class="p-5">No products found for this client.</p>
+      </template>
     </div>
   </div>
 </template>

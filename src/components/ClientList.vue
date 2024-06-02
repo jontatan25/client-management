@@ -74,7 +74,7 @@
             <td class="p-5 min-w-[200px]">{{ client.docNum }}</td>
             <td class="p-5 min-w-[120px]">{{ client.customerId }}</td>
             <td class="p-5 min-w-[120px] max-w-[120px]">{{ client.phone }}</td>
-            <td class="p-5 min-w-[120px] max-w-[225px] font-blue">
+            <td class="p-5 min-w-[120px] max-w-[225px] text-cmt-blue">
               <template v-if="client.products.length > 0">
                 <ul>
                   <li v-for="product in client.products" :key="product._id">
