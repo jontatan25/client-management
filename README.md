@@ -1,40 +1,60 @@
-# client-management
+# Client Management System
 
-This template should help get you started developing with Vue 3 in Vite.
+  Welcome to the Client Management System project! This system provides a comprehensive solution for managing client data and associated products. Built using Vue 3 and Vite, it offers a modern development environment and efficient performance.
 
-## Recommended IDE Setup
+  ## Recommended IDE Setup
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+  For the best development experience, I recommend using Visual Studio Code (VSCode) along with the Volar extension. Here's how to set it up:
 
-## Type Support for `.vue` Imports in TS
+  1. Install [VSCode](https://code.visualstudio.com/).
+  2. Install [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) extension from the VSCode marketplace. Make sure to disable Vetur if it's enabled.
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
+  ## Type Support for `.vue` Imports in TypeScript
 
-## Customize configuration
+  To ensure TypeScript type support for `.vue` files, I utilize `vue-tsc` instead of the default `tsc` CLI. Additionally, use Volar in your editor to enable TypeScript language service awareness of `.vue` types.
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+  ## Project Structure
 
-## Project Setup
+  The project structure is organized as follows:
 
-```sh
-npm install
-```
+  - **src/**: Contains the main source code for the project.
+    - **components/**: Vue components used throughout the application.
+    - **types/**: Custom TypeScript type declarations.
+  - **public/**: Static assets such as images and favicon.ico.
+  - **dist/**: Output directory for compiled code.
 
-### Compile and Hot-Reload for Development
+  ## Getting Started
 
-```sh
-npm run dev
-```
+  To set up the project locally, follow these steps:
 
-### Type-Check, Compile and Minify for Production
+  1. Clone the repository to your local machine.
+  2. Navigate to the project directory.
+  3. Install dependencies using npm:
+  
+  - npm install
 
-```sh
-npm run build
-```
+  ## Development
 
-### Lint with [ESLint](https://eslint.org/)
+  ### To start the development server and enable hot-reloading, run: 
 
-```sh
-npm run lint
-```
-# client-management
+  - npm run dev
+
+  ## Building for Production 
+
+  - npm run build
+
+  ## Linting 
+
+  ### Ensure code quality and adherence to coding standards by running ESLint: 
+
+  - npm run lint
+
+  ## Customize Configuration 
+
+  ### For customizing the Vite configuration, refer to the Vite Configuration Reference.
+
+  ### When you're ready to deploy the application, build it for production using:
+
+  Thank you for using my Client Management System! If you have any questions or feedback, feel free to reach out. Happy coding! 
+
+  ```bash
