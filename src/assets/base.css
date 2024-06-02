@@ -1,29 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Merriweather:wght@400;700&display=swap');
 
-.merriweather-regular {
-  font-family: 'Merriweather', serif;
-  font-weight: 400;
-  font-style: normal;
-}
-
-.merriweather-bold {
-  font-family: 'Merriweather', serif;
-  font-weight: 700;
-  font-style: normal;
-}
-
-.lato-regular {
-  font-family: 'Lato', sans-serif;
-  font-weight: 400;
-  font-style: normal;
-}
-
-.lato-bold {
-  font-family: 'Lato', sans-serif;
-  font-weight: 700;
-  font-style: normal;
-}
-
 *,
 *::before,
 *::after {
@@ -49,6 +25,35 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-th{
-  padding: 0
+th {
+  padding: 0;
 }
+
+.merriweather-regular {
+  font-family: 'Merriweather', serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.merriweather-bold {
+  font-family: 'Merriweather', serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.lato-regular {
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.lato-bold {
+  font-family: 'Lato', sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.font-blue {
+  color: #48caef;
+}
+
