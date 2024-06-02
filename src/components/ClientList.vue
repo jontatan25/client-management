@@ -58,7 +58,14 @@
             <th class="font-bold">Products</th>
           </tr>
         </thead>
-        <tbody v-if="filteredClients.length > 0">
+        <tbody v-if="loading">
+          <tr>
+            <td colspan="7" class="text-center py-7">
+              <LoadingComponent />
+            </td>
+          </tr>
+        </tbody>
+        <tbody v-else-if="filteredClients.length > 0">
           <tr
             v-for="(client, index) in filteredClients"
             :key="client.id"
@@ -103,6 +110,7 @@ import { ref, computed, onMounted } from 'vue'
 import axios from 'axios'
 import { useRouter } from 'vue-router'
 import SortIcon from '@/components/SortIcon.vue'
+import LoadingComponent from '@/components/LoadingComponent.vue'
 import { Product, Client } from '@/types'
 
 const apiUrl = import.meta.env.VITE_APP_API_URL || 'http://localhost:3000'
@@ -112,6 +120,7 @@ const products = ref<Product[]>([])
 const search = ref('')
 const sortKey = ref('')
 const sortAsc = ref(true)
+const loading = ref(true)
 const router = useRouter()
 
 const fetchClients = async () => {
@@ -124,6 +133,8 @@ const fetchClients = async () => {
     products.value = productsResponse.data
   } catch (error) {
     console.error(error)
+  } finally {
+    loading.value = false
   }
 }
 
