@@ -64,13 +64,13 @@ import axios from 'axios'
 import { useRoute } from 'vue-router'
 import ProductList from '@/components/ProductList.vue'
 import LoadingComponent from '@/components/LoadingComponent.vue'
-import { Product, Client } from '@/types'
+import { Product, Client } from '@/types/types';
 
 const apiUrl = import.meta.env.VITE_APP_API_URL || 'http://localhost:3000'
 
 const client = ref<Client | null>(null)
 const products = ref<Product[]>([])
-const loading = ref(true) // Add loading state
+const loading = ref(true)
 
 const route = useRoute()
 
@@ -79,7 +79,7 @@ const fetchClient = async () => {
     const response = await axios.get(`${apiUrl}/clients/${route.params.id}`)
     client.value = response.data
     const productsResponse = await axios.get(
-      `${apiUrl}/products?customerId=${client.value.customerId}`
+      `${apiUrl}/products?customerId=${client.value?.customerId}`
     )
     products.value = productsResponse.data
   } catch (error) {

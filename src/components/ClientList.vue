@@ -69,7 +69,7 @@
           <tr
             v-for="(client, index) in filteredClients"
             :key="client.id"
-            @click="selectClient(client.id)"
+            @click="selectClient(client.id.toString())"
             :class="[
               'border-b-slate-600 border-opacity-50 overflow-scroll cursor-pointer hover:bg-blue-600 hover:bg-opacity-20 transition ease-in-out delay-30 text-slate-200',
               { 'border-b-2': index !== filteredClients.length - 1 }
@@ -111,7 +111,7 @@ import axios from 'axios'
 import { useRouter } from 'vue-router'
 import SortIcon from '@/components/SortIcon.vue'
 import LoadingComponent from '@/components/LoadingComponent.vue'
-import { Product, Client } from '@/types'
+import { Product, Client } from '../types/types'
 
 const apiUrl = import.meta.env.VITE_APP_API_URL || 'http://localhost:3000'
 

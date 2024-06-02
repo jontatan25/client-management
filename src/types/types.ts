@@ -10,7 +10,7 @@ export interface Product {
   }
   
   export interface Client {
-    _id: number;
+    id: number;
     docType: string;
     docNum: string;
     email: string;
@@ -18,5 +18,6 @@ export interface Product {
     givenName: string;
     familyName1: string;
     phone: string;
+    products: Product[]
   }
   
