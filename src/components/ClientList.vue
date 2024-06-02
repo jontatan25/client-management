@@ -11,7 +11,7 @@
           <tr class="border-b-[3px] border-b-slate-500 border-opacity-60">
             <th>
               <button
-                class="flex items-center justify-between p-5 w-full hover:bg-sky-700 rounded transition ease-in-out delay-30"
+                class="flex items-center justify-between p-5 w-full hover:bg-blue-600 hover:bg-opacity-80 rounded-t transition ease-in-out delay-30"
                 @click="sort('givenName')"
               >
                 <span class="mr-2 font-bold">Name</span>
@@ -20,7 +20,7 @@
             </th>
             <th>
               <button
-                class="flex items-center justify-between p-5 w-full hover:bg-sky-700 rounded transition ease-in-out delay-30"
+                class="flex items-center justify-between p-5 w-full hover:bg-blue-600 hover:bg-opacity-80 rounded-t transition ease-in-out delay-30"
                 @click="sort('email')"
               >
                 <span class="mr-2 font-bold">Email</span>
@@ -29,7 +29,7 @@
             </th>
             <th>
               <button
-                class="flex items-center justify-between p-5 w-full hover:bg-sky-700 rounded transition ease-in-out delay-30"
+                class="flex items-center justify-between p-5 w-full hover:bg-blue-600 hover:bg-opacity-80 rounded-t transition ease-in-out delay-30"
                 @click="sort('docType')"
               >
                 <span class="mr-2 font-bold">Document Type</span>
@@ -38,7 +38,7 @@
             </th>
             <th>
               <button
-                class="flex items-center justify-between p-5 w-full hover:bg-sky-700 rounded transition ease-in-out delay-30"
+                class="flex items-center justify-between p-5 w-full hover:bg-blue-600 hover:bg-opacity-80 rounded-t transition ease-in-out delay-30"
                 @click="sort('docNum')"
               >
                 <span class="mr-2 font-bold">Document Number</span>
@@ -47,7 +47,7 @@
             </th>
             <th>
               <button
-                class="flex items-center justify-between p-5 w-full hover:bg-sky-700 rounded transition ease-in-out delay-30"
+                class="flex items-center justify-between p-5 w-full hover:bg-blue-600 hover:bg-opacity-80 rounded-t transition ease-in-out delay-30"
                 @click="sort('customerId')"
               >
                 <span class="mr-2 font-bold">Customer ID</span>
@@ -64,7 +64,7 @@
             :key="client.id"
             @click="selectClient(client.id)"
             :class="[
-              'border-b-slate-600 border-opacity-50 overflow-scroll cursor-pointer hover:bg-blue-900 transition ease-in-out delay-30 text-slate-200',
+              'border-b-slate-600 border-opacity-50 overflow-scroll cursor-pointer hover:bg-blue-600 hover:bg-opacity-20 transition ease-in-out delay-30 text-slate-200',
               { 'border-b-2': index !== filteredClients.length - 1 }
             ]"
           >
@@ -74,12 +74,17 @@
             <td class="p-5 min-w-[200px]">{{ client.docNum }}</td>
             <td class="p-5 min-w-[120px]">{{ client.customerId }}</td>
             <td class="p-5 min-w-[120px] max-w-[120px]">{{ client.phone }}</td>
-            <td class="p-5 min-w-[120px] max-w-[225px]">
-              <ul>
-                <li v-for="product in client.products" :key="product._id">
-                  {{ product.productName }}
-                </li>
-              </ul>
+            <td class="p-5 min-w-[120px] max-w-[225px] font-blue">
+              <template v-if="client.products.length > 0">
+                <ul>
+                  <li v-for="product in client.products" :key="product._id">
+                    {{ product.productName }}
+                  </li>
+                </ul>
+              </template>
+              <template v-else>
+                <span>None</span>
+              </template>
             </td>
           </tr>
         </tbody>
